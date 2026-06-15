@@ -18,6 +18,16 @@
 					font-family: 'BookkGothic';
 					font-weight: 700;
 				}
+		html {
+		    scroll-behavior: smooth;
+		    hyphens: none;
+		    word-break: keep-all;
+		    overflow-wrap: normal;
+		}
+		html {
+    overflow-x: hidden;
+    max-width: 100%;
+}
 
 		/*section class*/
 			.section{
@@ -33,17 +43,24 @@
 		/*div class*/
 			
 			.contents{
-				width: 1200px;
+				width: 100%;
+    			max-width: 1200px;
 				margin: auto;
 				position: relative;
 				padding: 200px 0px;
+			    box-sizing: border-box;
 			}
-			.contents-nav
+
 			.contents-footer{
-				width: 1200px;
+				width: 100%;
+    			max-width: 1200px;
 				margin: auto;
 				padding: 200px 0px;
+				position: relative;
+			    padding: 200px 0px;
+			    box-sizing: border-box;
 			}
+
 			.sand-wrap {
     position: relative;
     width: 100%;
@@ -274,7 +291,54 @@
 			transform: rotate(-5deg);     /* 왼쪽으로 5도 기울기 */
 		}
 
+/* ================================
+   샌드 카드 호버
+   ================================ */
+.sand-card {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
 
+.sand-card img {
+    display: block;
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.sand-card:hover img {
+    transform: rotate(0deg) scale(1.05) !important;
+}
+
+.sand-card-label {
+    position: absolute;
+    bottom: 480px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #A2D959;
+    padding: 14px 24px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.sand-card:hover .sand-card-label {
+    opacity: 1;
+}
+
+
+ @keyframes fade-up {
+        from { opacity: 0; transform: translateY(60px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .sand-label-1 { animation: fade-up linear both; animation-timeline: scroll(); animation-range: 0vh 15vh; }
+    .sand-label-2 { animation: fade-up linear both; animation-timeline: scroll(); animation-range: 10vh 25vh; }
+    .sand-label-3 { animation: fade-up linear both; animation-timeline: scroll(); animation-range: 20vh 35vh; }
+    .sand-label-4 { animation: fade-up linear both; animation-timeline: scroll(); animation-range: 30vh 45vh; }
+    .sand-label-5 { animation: fade-up linear both; animation-timeline: scroll(); animation-range: 40vh 55vh; }
+		
 		</style>
 	</head>
 
@@ -288,10 +352,11 @@
 
 				<!-- 텍스트 메뉴 4개. 각 >글자 부분< 을 원하는 이름으로 바꾸면 됨 -->
 				<div class="nav-menu">
-					<a href="#">태초의 샌드</a>
-					<a href="#">조금만 더...</a>
-					<a href="#">이만큼 더?</a>
-					<a href="#">더 많이!</a>
+					<a href="#01">태초의 샌드</a>
+					<a href="#02">조금 더...</a>
+					<a href="#03">이만큼만 더?</a>
+					<a href="#04">아직 부족해</a>
+					<a href="#05">더 많이!</a>
 				</div>
 
 			</div>
@@ -341,17 +406,20 @@
 
 
 				<div style="position: relative; ">
-					<h2 class="ab h2 text-green center" 
-					style="left: -150px; top: -140px;">하지만 요즘 샌드들은...<br>평균 두께 <span class="text-pink">8cm</span>를 훌쩍 넘는 것들도 존재한다.</h2>
-					<p class="ab p text-green center" style="padding-top: 50px; left: -150px; top: -40px;">이렇게 생긴 뚱뚱한 샌드위치는 우리에게 이미 익숙해진 존재이기도 하다.</p>
+					
 					<img src="sand-04.png" class="ab" style="top:200px; left:30px; width:800px;">
 					<img src="circle.png" class="ab" style=" width: 200px; top:300px; left: 780px;">
 					<img src="circle.png" class="ab" style=" width: 200px; top:498px; left: 780px;">	
 					<img src="circle.png" class="ab" style=" width: 200px; top:696px; left: 780px;">					
 				</div>
+				<div class="contents" style="padding-top:300px;">
+					<h2 class="ab h2 text-green center" 
+					style="left: -150px; top: -140px;">하지만 요즘 샌드들은...<br>평균 두께 <span class="text-pink">8cm</span>를 훌쩍 넘는 것들도 존재한다.</h2>
+					<p class="ab p text-green center" style="padding-top: 50px; left: -150px; top: -40px;">이렇게 생긴 뚱뚱한 샌드위치는 우리에게 이미 익숙해진 존재이기도 하다.</p>
+				</div>
 
 				<div style="position: relative;">
-					<img src="man01.png" class="ab" style="top:80px; left: -250px; width: 400px;">
+					<img src="man01.png" class="ab" style="top:px; left: -250px; width: 400px;">
 					<p class="text-orange p left ab" style="left:130px; bottom: -190px;">"이건... 샌드가 아니라..."</p>
 					<h2 class="text-orange h2 left ab" style="left: 650px; bottom:-1000px; transform: rotate(-30deg);">WOW</p>
 				</div>
@@ -374,7 +442,8 @@
 
 
 	<!-- 도입 -->
-		<section class="section bg-pink-04" style="z-index: 4;">
+
+		<section id="01" class="section bg-pink-04" style="z-index: 4;">
 
 			<div class="contents">
 
@@ -382,36 +451,55 @@
 					18세기 영국의 어느 날... 샌드위치는 탄생했다.
 				
 				</h1>
+				<div style="position:relative; width:100vw; left:50%; transform:translateX(-50%); overflow:hidden; height:500px;">
+				    <img src="sand-06.png" class="ab"
+				    style="width:800px; right:0; top:-40px;">
+				</div>
 
-				<img src="sand-history.png"
-				class="center"
-				style="width:900px; padding-top:120px;">
-				<p>응애~~</p>
+				<p class="ab p text-green center"
+				style="top: 630px;
+				left: 10px;
+				padding-right: 440px;">
 
-				<p class="p text-green center"
-				style="padding-top:120px;">
-					지금과는 조금 달랐습니다. 18세기 영국에서 탄생한 샌드위치는 빠르게 식사를 해결하기 위한 음식이었다.
+					지금과는 조금 달랐다.<br>18세기 영국에서 탄생한 샌드위치는 빠르게 식사를 해결하기 위한 음식이었다.
+				18세기 영국, 한 백작이 카드놀이를 하다가 식사 시간을 아끼기 위해 빵과 빵 사이에 고기를 끼워 먹기 시작했다.
+            그것이 바로 샌드위치의 시작이었다.
 				</p>
 
-        <img src="고전샌드위치사진.png"
+        <img src="sandwichman.png"
         class="center"
-        style="width:900px; padding-top:120px;">
+        style="width:100%; padding-top:120px; padding-left: 0;object-fit:cover; display:block;">
 
         <p class="p text-green center"
         style="padding-top:120px;">
-            18세기 영국, 한 백작이 카드놀이를 하다가 식사 시간을 아끼기 위해 빵과 빵 사이에 고기를 끼워 먹기 시작했다.
-            그것이 바로 샌드위치의 시작이었다.
+            
         </p>
 
         </p>
 
-        <div style="padding-top:180px;">
-            <p class="p text-green center">한 손으로 먹을 수 있다</p>
-            <p class="p text-green center" style="padding-top:30px;">자리를 비우지 않고 먹을 수 있다</p>
-            <p class="p text-green center" style="padding-top:30px;">빵이 손을 더럽히지 않게 막아준다</p>
-            <p class="p text-green center" style="padding-top:30px;">무엇보다, 빠르게 먹을 수 있다</p>
-        </div>
+<div style="padding-top:30px;">
 
+    <p class="p text-white center"
+    style="display:table; margin:0 auto; background:#A2D959; padding:20px 30px;">
+        한 손으로 먹을 수 있었고,
+    </p>
+
+    <p class="p text-white center"
+    style="display:table; margin:20px auto 0; background:#A2D959; padding:20px 30px;">
+        자리를 비우지 않고 먹을 수 있었고,
+    </p>
+
+    <p class="p text-white center"
+    style="display:table; margin:20px auto 0; background:#A2D959; padding:20px 30px;">
+        빵이 손을 더럽히지 않게 막아주었으며,
+    </p>
+
+    <p class="p text-white center"
+    style="display:table; margin:20px auto 0; background:#A2D959; padding:20px 30px;">
+        무엇보다도 빠르게 먹을 수 있었다.
+    </p>
+
+</div>
         <p class="p text-pink center"
         style="padding-top:140px;">
             그리고 이 간편한 음식은 바다를 건너 우리나라에도 도착하게 되었다.
@@ -427,136 +515,130 @@
 
 		</section>
 	<!-- 핑크1 -->
-		<section id="section-02" class="section bg-lightgreen" style="z-index: 5;">
+		<section id="02" class="section bg-lightgreen" style="z-index: 5;">
 
-    <!-- 가로를 길게 꽉 채우는 와이드 이미지 -->
-    <div style="width:100%; position:relative; height:70vh; overflow:hidden;">
-        <img src="길거리토스트가판대전경.png"
+<div id="sand-scroll-section" style="position:relative; height:700vh;">
+
+
+    <div style="position:sticky; top:0; width:100%; height:100vh; overflow:hidden;">
+        <img src="sand-05.png"
         style="width:100%; height:100%; object-fit:cover; display:block;">
-    </div>
 
-    <div class="contents">
+        <div id="sand-labels" style="position:absolute; top:54%; left:50%; transform:translate(-50%, -50%); text-align:center;">
 
-        <h1 class="h1 text-green center">
-            한국에는 길거리 토스트가 있었다.
-        </h1>
-
-        <p class="p text-pink center"
-        style="padding-top:120px;">
-            길거리 토스트는 네모난 식빵 두 장,그 사이엔 계란, 양배추, 햄, 그리고 설탕 한 줌으로 길거리 사람들의 허기를 채워 주었다.
-        </p>
-
-        <div style="position:relative; height:700px; margin-top:100px;">
-
-            <img src="길거리토스트조리장면.png" class="ab"
-            style="width:600px; left:0; top:50px;">
-
-            <p class="p text-pink ab"
-            style="right:0; top:350px; text-align:right; line-height:1.8;">
-                케첩과 설탕이 더해진 손가락 두세 마디 정도 높이의 투박한 단면은 한 손으로 쥐고 한 입에 베어 물기 딱 좋은 두께였다.
+            <p class="p text-white sand-label"
+            style="display:table; margin:0 auto; background:#A2D959; padding:40px 30px; opacity:0; transform:translateY(60px); transition: opacity 0.5s ease, transform 0.5s ease;">
+                빵
+            </p>
+            <p class="p text-white sand-label"
+            style="display:table; margin:20px auto 0; background:#A2D959; padding:40px 30px; opacity:0; transform:translateY(60px); transition: opacity 0.5s ease, transform 0.5s ease;">
+                계란
+            </p>
+            <p class="p text-white sand-label"
+            style="display:table; margin:20px auto 0; background:#A2D959; padding:40px 30px; opacity:0; transform:translateY(60px); transition: opacity 0.5s ease, transform 0.5s ease;">
+                햄
+            </p>
+            <p class="p text-white sand-label"
+            style="display:table; margin:20px auto 0; background:#A2D959; padding:40px 30px; opacity:0; transform:translateY(60px); transition: opacity 0.5s ease, transform 0.5s ease;">
+                야채
+            </p>
+            <p class="p text-white sand-label"
+            style="display:table; margin:20px auto 0; background:#A2D959; padding:40px 30px; opacity:0; transform:translateY(60px); transition: opacity 0.5s ease, transform 0.5s ease;">
+                빵
             </p>
 
         </div>
-
-        <h2 class="h2 text-pink center"
-        style="padding-top:140px;">
-            하지만 여전히 가성비 있고 간단한 것이 샌드의 전부였던 시절이었다.
-        </h2>
-
-        <p class="p text-green center"
-        style="padding-top:120px;">
-            하지만 시간이 흐르고, 샌드는 조금씩... 두꺼워지기 시작했다.
-        </p>
-
     </div>
 
+    <div style="position:relative; z-index:10; background:#FFE3EE;">
+        <div class="contents">
+            <h2 class="h2 text-green center">
+                한국에는 길거리 토스트가 있었다.
+            </h2>
+            <p class="p text-pink center"
+            style="padding-top:120px; padding-right: 150px;">
+                길거리 토스트는 네모난 식빵 두 장, 그 사이엔 계란, 양배추, 햄, 그리고 설탕 한 줌으로 사람들의 허기를 채워 주었다. 케첩과 설탕이 더해진 손가락 두세 마디 정도 높이의 투박한 단면은 한 손으로 쥐고 한 입에 베어 물기 딱 좋은 두께였다.<br>여전히 가성비 있고 간단한 것이 샌드의 전부였던 시절이었다.
+            </p>
+        </div>
+    </div>
+</div>
 </section>
 
-	<!-- 핑크2 -->
-<section id="section-03" class="section bg-pink-02" style="z-index: 6;">
+<section class="section" style="z-index: 6; background:none; min-height:0;">
+    <div style="position:relative; z-index:10;" class="bg-lightgreen">
+        <div class="contents">
+            <h2 class="h2 text-green center">
+                이게 전부였지만... 시간이 흐르고,<br>샌드는 조금씩... 두꺼워지기 시작했다.
+            </h2>
+        </div>
+    </div>
+</section>
 
+<section id="03" class="section bg-pink-02" style="z-index: 6;">
     <div class="contents" style="height:1300px;">
-
+        <p class="p text-green center"
+        style="padding-bottom:120px;">
+            그 시발점에는 2010년대 즈음 초신성처럼 등장한 어느 컨텐츠가 있다.
+        </p>
         <h1 class="h1 text-white center">
-            그 시발점에는 2010년대 즈음 초신성처럼 등장한 한 컨텐츠가 있다.
             바로 먹방, 즉 먹는 방송이다.
         </h1>
-
         <p class="p text-green center"
         style="padding-top:100px;">
             화면 속에서 사람들은 엄청난 양의 음식을 먹기 시작했다.
             보는 사람도, 먹는 사람도 비주얼에 더 집중하게 되었다.
-            이때부터 였을까? 샌드는 반으로 잘려 단면으로 승부를 보기 시작했다.
+            이때부터 였을까? 샌드는 반으로 잘리고 예쁘게 쌓여 비주얼로 승부를 보기 시작했다.
         </p>
 
-        <div style="position:relative; height:700px; margin-top:100px;">
+        <div style="display:flex; justify-content:space-evenly; align-items:flex-end; padding-top:100px;">
 
-            <img src="두꺼운샌드위치한손에들기버거운모습.png" class="ab"
-            style="width:650px; left:-50px; top:50px;">
+            <div class="sand-card">
+                <img src="sand-07.png" style="transform:rotate(-10deg);">
+                <p class="p text-white sand-card-label">치킨 클럽 샌드위치</p>
+            </div>
 
-            <img src="샌드위치작은비교이미지.png" class="ab"
-            style="width:280px; left:450px; top:0px;">
+            <div class="sand-card">
+                <img src="sand-08.png" style="transform:rotate(10deg);">
+                <p class="p text-white sand-card-label">베이컨 더블 치즈 샌드위치</p>
+            </div>
 
-            <h2 class="h2 text-green ab"
-            style="right:0; top:350px; line-height:1.8; text-align:right;">
-                내용
-            </h2>
-
-            <p class="p text-green ab"
-            style="right:0; bottom:60px; text-align:right;">
-                내용
-            </p>
+            <div class="sand-card">
+                <img src="sand-09.png" style="transform:rotate(-10deg);">
+                <p class="p text-white sand-card-label">에그 샌드위치</p>
+            </div>
 
         </div>
 
-        <h2 class="h2 text-white center"
-        style="padding-top:140px;">
-            내용
-        </h2>
-
-        <p class="p text-green center"
-        style="padding-top:100px;">
-            내용
-        </p>
-
     </div>
-
 </section>
 
 	<!-- 핑크3 -->
-		<section class="section bg-pink-03" style="z-index: 6;">
+		<section  id="03"class="section bg-pink-03" style="z-index: 6;">
 
 			<div class="contents"
 			style="height:1100px;">
-
-						<h2 class="h2 text-green ab"
+		<h2 class="h2 text-green ab"
 		style="right:0; top:150px; line-height:1.6;">
-		    맛뿐 아니라,<br>
-		    '보여지는 방식'도 중요해졌습니다.
+		    이제는 맛 뿐만 아니라 보여지는 모습도 필수 요소가 되었다
 		</h2>
 
 		<p class="p text-green ab"
 		style="right:0; top:420px; line-height:1.8;">
-		    SNS가 일상이 된 시대,<br>
-		    음식은 먹기 전에 먼저 사진이 됩니다.<br>
-		    올리기 좋은 음식, 잘라봤을 때 예쁜 음식,<br>
-		    단면이 화려한 음식.
+		    SNS가 일상이 된 시대에, 음식은 먹기 전에 먼저 사진이 된다.
+		    사진을 올리기 좋은 음식, 잘라봤을 때 예쁘고 단면이 화려한 음식이 유명세를 타며 어느새 이런 형태는 거대한 유행이 되었다.
 		</p>
 
 		<p class="p text-green ab"
 		style="right:0; top:700px; line-height:1.8;">
-		    일본에서 시작된 후르츠 산도는<br>
-		    그 변화를 가장 잘 보여줍니다.<br><br>
-		    먹기 위해 만든 음식이<br>
-		    보여주기 위한 음식으로도 변하기 시작한 것입니다.<br><br>
-		    잘린 단면의 과일 배열, 흘러내리는 생크림.<br>
-		    한 입 크기보다 한 컷 크기가 더 중요해졌습니다.
+		    일본에서 시작된 후르츠 산도는 그 변화를 가장 잘 보여준다.
+		    잘린 단면의 과일 배열, 꽉 찬 생크림을 한 샌드는
+		    한 입 크기보다 한 컷 크기가 더 중요해졌다.
 		</p>
 		</div>
 
 		</section>
 	<!-- 핑크4 -->
-		<section class="section bg-pink-01" style="z-index: 7;">
+		<section id="04" class="section bg-pink-01" style="z-index: 7;">
 
 			<div class="contents"
 			style="height:1200px;">
@@ -567,114 +649,49 @@
 
 				<h1 class="h2 text-white ab"
 				style="right:0; top:120px; line-height:1.5;">
-					그리고 샌드위치는 점점 새로운 형태로 진화합니다.
+					그리고 샌드위치는 점점 새로운 형태로 진화하고 있다.
 				</h1>
 
-				<!-- <p class="p text-white ab"
-				style="right:0; top:430px;">
-					식빵을 넘어
-				</p>
-
-				<p class="p text-white ab"
-				style="right:0; top:520px;">
-					베이글,<br>
-					크루아상,<br>
-					브리오슈까지.
-				</p> -->
-
-				<p class="p text-white ab"
-				style="right:0; top:760px;">
-					재료도 점점 많아졌습니다.
-				</p>
-
+				
 				<p class="p text-white ab"
 				style="right:0; top:850px;">
-					크림은 더 두꺼워지고, 
-					과일은 더 커지고, 
-					단면은 더 화려해졌습니다.
+					가장 최근의 진화 형태는 샌드베이글이다. 과일 산도의 업그레이드 버전이라고 할 수 있다. 두꺼운 베이글을 가르면 크림과 화려한 단면을 위한 재료들이 박혀 있다. 
 				</p>
-<!-- 
-				<h1 class="h2 text-white center"
-				style="padding-top:980px;">
-					그리고 마침내
-				</h1>
-
-				<h1 class="h1 text-white center"
-				style="padding-top:80px;">
-					샌드위치는<br>
-					'먹는 음식'을 넘어<br>
-					'구경하는 음식'이 되었습니다.
-				</h1> -->
 
 			</div>
 
 		</section>
 		
 	<!-- 결론? -->
-		<section class="section bg-green" style="z-index: 8;">
+		<section class="section bg-lightgreen" style="z-index: 8;">
 
 			<div class="contents">
 
-				<h2 class="h2 text-pink center">
-				    그저 샌드위치를 크게 만든 것 뿐일까요?
-				</h2>
-
 				<p class="p text-green center"
 				style="padding-top:150px;">
-				    샌드위치의 변화는 단순한 음식 트렌드가 아닙니다.<br>
-				    그 안에는 시대의 취향이 고스란히 담겨 있습니다.
+				    샌드의 변화는 단순한 음식 트렌드를 넘어서<br>
+				    그 안에시대의 취향이 고스란히 담겨 있다.
 				</p>
 
 				<p class="p text-green center"
 				style="padding-top:80px;">
 				    편리함을 원하던 시작부터,<br>
-				    가성비 있는 배부름을 원했던 시기 <br>
-				    그리고 보여주기를 원하는 지금에 이르기
+				    가성비 있는 배부름을 원했던 시기를 지나 <br>
+				    그리고 보여주기를 원하는 지금에 이르기까지...<br>
+				    
 				</p>
 
-				<p class="p text-green center"
-				style="padding-top:80px;">
-				    어느 시대가 궁금하다면,<br>
-				    빵과 빵 사이를 살펴보세요.
-				</p>
+				<h2 class="h2 text-pink center"
+				style="padding-top:150px; text-align: center;">
+				어느 시대가 궁금하다면,<br>
+				빵과 빵 사이를 살펴보는 것이 도움이 될 것이다.
+				</h2>
 
-				<!-- <p class="p text-green center"
-				style="padding-top:150px;">
-					더 눈에 띄는 것,<br>
-					더 화려한 것,<br>
-					더 특별한 것을 원하는
-				</p>
- --><!-- 
-				<p class="p text-green center"
-				style="padding-top:80px;">
-				
-				</p>
-
-				<h1 class="h1 text-pink center"
-				style="padding-top:220px;">
-					정말 좋은 샌드위치의 기준은
-				</h1>
-
-				<h1 class="h1 text-pink center"
-				style="padding-top:80px;">
-					높이일까요?
-				</h1>
-
-				<h1 class="h1 text-pink center"
-				style="padding-top:80px;">
-					아니면
-				</h1>
-
-				<h1 class="h1 text-pink center"
-				style="padding-top:80px;">
-					한 입의 만족감일까요?
-				</h1>
- -->
 			</div>
 
 		</section>
 	<!-- 폼폼푸터 -->
-		<section class="bg-green" style="z-index:9; padding:0; width: 100%; position: relative;">
+		<section class="bg-lightgreen" style="z-index:9; padding:0; width: 100%; padding-top:50px;position: relative;">
 			<footer>
 				<div> 
 					<img src="top-02.png" style="width:100%; mix-blend-mode: darken;">
@@ -691,6 +708,32 @@
 			</footer>
 			
 		</section>
-		
+<script>
+    const section = document.getElementById('sand-scroll-section');
+    const labels = document.querySelectorAll('.sand-label');
+    const totalLabels = labels.length;
+
+    window.addEventListener('scroll', () => {
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    const sectionHeight = section.offsetHeight;
+
+    const scrolled = window.scrollY - sectionTop;
+
+    // 80% 대신 전체 높이에서 뷰포트 1개 높이를 뺀 구간 사용
+    const activeRange = sectionHeight - window.innerHeight;
+    const step = activeRange / (totalLabels + 1);
+
+    labels.forEach((label, i) => {
+        const trigger = step * (i + 1);
+        if (scrolled >= trigger) {
+            label.style.opacity = '1';
+            label.style.transform = 'translateY(0)';
+        } else {
+            label.style.opacity = '0';
+            label.style.transform = 'translateY(60px)';
+        }
+    });
+});
+</script>
 	</body>
 </html>
